@@ -1,0 +1,328 @@
+
+body{
+	font-family: 'Calibri';
+	z-index: 50;
+	background-color: #f2f2f2; 
+	overflow-y: hidden; 
+}
+
+header{
+	width: 100%;
+	height: 60px;
+	background-color: #666666;
+	color: #ffff;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	opacity: 95%;
+}
+
+header img{
+	display: inline-block;
+	float: left;
+	width: 10%;
+	min-width: 125px;
+	margin-left: 5%;
+}
+
+h1{
+	display: none;
+}
+
+.contenedor{
+	width: 98%;
+	margin: auto;
+}
+
+/*   ----  MENÚ   ----   */
+
+#menu-bar{
+	display: none;
+}
+
+header label {
+	float: right;
+	font-size: 28px;
+	margin: 15px 5px;
+	cursor: pointer;
+}
+
+.menu {
+	position: absolute;
+	top: 15vh;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background: rgba(51,51,51,0.9);
+	transition: all 0.5s;
+	transform: translateX(200%);
+}
+
+.menu a {
+	display: block;
+	color: #ffff;
+	height: 50px;
+	text-decoration: none;
+	padding: 15px;
+	border-bottom: 1px solid rgba(255,255,255,0.5);
+}
+
+.menu a:hover {
+	background: rgba(255,255,255,0.3);
+}
+
+#menu-bar:checked ~ .menu{
+	transform: translateX(0%);
+}
+
+
+header .contenedor {
+	display: table;
+}
+
+@media(min-width: 700px) {
+	header {
+		height: 15vh;
+	}
+
+	header img{
+		width: 10%;
+		min-width: 250px;
+	}
+
+	header label {
+		font-size: 8vh;
+		margin: 4vh 2vh;
+	}
+
+	.menu a {
+		font-size: 90px;
+		padding: 20px;
+		margin: 20px;
+		height: 15%;
+	}
+	
+}
+
+@media(min-width: 1024px) {
+	.menu{
+		position: static;
+		width: auto;
+		height: auto;
+		transform: translateX(0%);
+		float: right;
+		display: flex;
+		background-color: rgba(121, 155, 27, 0);
+	}
+
+	.menu a {
+		border: none;
+		margin: 5px;
+		font-size: 16px;
+		padding: 15px;
+		margin: 5px;
+	}
+
+	header label {
+		transform: translateX(200%);
+	}
+
+	header {
+		background-color: rgba(51,51,51,0.9);
+		height: 60px;
+	}
+}
+
+
+
+/*   ----  MAIN  ----   */
+
+section {
+	width: 100%;
+	height: 100vh;
+}
+
+i {
+	font-size: 20px;
+}
+
+article h2{
+	font-size: 32px;
+	font-family: calibri;
+	grid-column-start: 2;
+	grid-column-end: 4;
+	grid-row-start: 2;
+	grid-row-end: 3;
+}
+
+.grid{
+	display: grid;
+	width: auto;
+	margin: auto;
+	text-align: center;
+	grid-gap: 20px;
+	grid-template-columns: 3% 24% 24% 5% 34% 10%;
+	grid-template-rows: 26% 12.8% 21.6% 21.6% 18%;
+	height: 85vh;
+	width: 100vw;
+}
+
+.redes{
+	display: inline-block;
+	color: #eee;
+	font-family: calibri light;
+	font-size: 18px;
+	background: rgba(51,51,51,0.9);
+	padding: 30px 80px;
+	margin: 20px;
+	border-radius: 5px;
+	animation-name: Tamanio;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+}
+
+#wp {
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 3;
+	grid-row-end: 4;
+}
+
+#fb {
+	grid-column-start: 3;
+	grid-column-end: 4;
+	grid-row-start: 3;
+	grid-row-end: 4;
+}
+
+#ig {
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 4;
+	grid-row-end: 5;
+}
+
+#em {
+	grid-column-start: 3;
+	grid-column-end: 4;
+	grid-row-start: 4;
+	grid-row-end: 5;
+}
+
+.redes:hover {
+	background: rgba(100,100,100,0.8);
+	cursor: pointer;
+}
+
+h3{
+	display: inline-block;
+}
+
+article a{
+	text-decoration: none;
+}
+
+
+article img {
+	display: inline-block;
+	width: 600px;
+	height: auto;
+	grid-column-start: 5;
+	grid-column-end: 6;
+	grid-row-start: 2;
+	grid-row-end: 5;
+}
+
+@media(max-width: 1300px) {
+
+	
+	.grid{
+		font-size: 32px;
+		grid-template-columns: 12% 76% 12%;
+		grid-template-rows: 25% 11% 11% 11% 11% 11% 20%;
+		height: 85vh;
+	}
+
+	article h2{
+		font-size: 32px;
+		font-family: calibri;
+		grid-column-start: 2;
+		grid-column-end: 3;
+		grid-row-start: 2;
+		grid-row-end: 3;
+	}
+
+	#wp {
+		grid-column-start: 2;
+		grid-column-end: 3;
+		grid-row-start: 3;
+		grid-row-end: 4;
+	}
+	
+	#fb {
+		grid-column-start: 2;
+		grid-column-end: 3;
+		grid-row-start: 4;
+		grid-row-end: 5;
+	}
+	
+	#ig {
+		grid-column-start: 2;
+		grid-column-end: 3;
+		grid-row-start: 5;
+		grid-row-end: 6;
+	}
+	
+	#em {
+		grid-column-start: 2;
+		grid-column-end: 3;
+		grid-row-start: 6;
+		grid-row-end: 7;
+	}
+
+}
+
+@keyframes Tamanio {
+	0%{
+		transform: scale(1);
+	}
+	50%{
+		transform: scale(0.9);
+	}
+
+	100%{
+		transform: scale(1);
+	}
+}
+
+/*   ----  FOOTER   ----   */
+
+footer {
+	background-color: #333; 
+	height: 200px;
+	transform: translateY(-105px);
+}
+
+footer h2 {
+	text-align: center;
+	font-size: 20px;
+	color: #bbb;
+}
+
+footer p {
+	display: inline-block;
+	font-size: 16px;
+	color: #bbb;
+	float: right;
+	padding-top: 10px;
+	padding-right: 30px;
+}
+
+footer .contenedor {
+	flex-wrap: wrap;
+	justify-content: center;
+	padding-top: 20px;
+	padding-bottom: 60px;
+}
+

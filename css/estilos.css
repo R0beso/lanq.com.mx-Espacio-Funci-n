@@ -1,0 +1,624 @@
+
+body{
+	font-family: 'Calibri';
+	z-index: 50;
+	background-color: #f2f2f2;
+}
+
+p {
+	font-size: 24px;
+	font-family: 'Nunito Sans', sans-serif;
+	text-align: center;
+	padding: 5px;
+}
+
+header{
+	width: 100%;
+	height: 200px;
+	background-color: #666666;
+	color: #ffff;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	opacity: 95%;
+}
+
+header img{
+	display: inline-block;
+	float: left;
+	width: 10%;
+	min-width: 125px;
+	margin-left: 5%;
+}
+
+h1{
+	display: none;
+}
+
+.contenedor{
+	width: 98%;
+	margin: auto;
+}
+
+
+@media(min-width: 1024px) {
+	p {
+		font-size: 16px;
+		font-family: 'Nunito Sans', sans-serif;
+		text-align: center;
+		padding: 5px;
+	}
+}
+
+/*   ----  MENÚ   ----   */
+
+#menu-bar{
+	display: none;
+}
+
+header label {
+	float: right;
+	font-size: 28px;
+	margin: 15px 5px;
+	cursor: pointer;
+}
+
+.menu {
+	position: absolute;
+	top: 15vh;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background: rgba(51,51,51,0.9);
+	transition: all 0.5s;
+	transform: translateX(200%);
+}
+
+.menu a {
+	display: block;
+	color: #ffff;
+	height: 50px;
+	text-decoration: none;
+	padding: 15px;
+	border-bottom: 1px solid rgba(255,255,255,0.5);
+}
+
+.menu a:hover {
+	background: rgba(255,255,255,0.3);
+}
+
+#menu-bar:checked ~ .menu{
+	transform: translateX(0%);
+}
+
+
+header .contenedor {
+	display: table;
+}
+
+@media(min-width: 700px) {
+	header {
+		height: 15vh;
+	}
+
+	header img{
+		width: 10%;
+		min-width: 250px;
+	}
+
+	header label {
+		font-size: 8vh;
+		margin: 4vh 2vh;
+	}
+
+	.menu a {
+		font-size: 90px;
+		padding: 20px;
+		margin: 20px;
+		height: 15%;
+	}
+	
+}
+
+@media(min-width: 1024px) {
+	.menu{
+		position: static;
+		width: auto;
+		height: auto;
+		transform: translateX(0%);
+		float: right;
+		display: flex;
+		background-color: rgba(121, 155, 27, 0);
+	}
+
+	.menu a {
+		border: none;
+		margin: 5px;
+		font-size: 16px;
+		padding: 15px;
+		margin: 5px;
+	}
+
+	header label {
+		transform: translateX(200%);
+	}
+
+	header {
+		background-color: rgba(51,51,51,0.9);
+		height: 60px;
+	}
+}
+
+
+
+
+/*   ----  BANNER   ----   */
+
+section {
+	width: 100%;
+	margin-bottom: 25px;
+}
+
+#banner {
+	margin-top: 60px;
+	position: relative;
+}
+
+#banner img{
+	margin-top: 0;
+	position: fixed;
+	z-index: -1;
+	width: 100vw;
+	transform: translateY(-25%);
+	min-height: 250px;
+}
+
+.auxiliar{
+	position: relative;
+	width: 1vw;
+	height: 60vw;
+	max-height: 650px;
+	min-height: 250px;
+}
+
+.textoBanner {
+	background-color: rgba(51,51,51,0.5);
+	padding: 4%;
+	border-color: #fff;
+	border-radius: 10px; 
+	border: 3px solid #ddd;
+	display: inline-block;
+	animation-name: Tamanio;
+	animation-duration: 2.5s;
+}
+
+#banner .contenedor {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	color: #fff;
+	text-align: center;
+}
+
+#banner h2 {
+	font-size: 42px;
+	float: center;
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+
+@media(max-width: 1024px) {
+
+	#banner h2 {
+		font-size: 24px;
+	}
+	
+	.textoBanner {
+		padding: 5px;
+		border: none;
+	}
+}
+
+@keyframes Tamanio {
+	0%{
+		transform: scale(1);
+	}
+	25% {
+		transform: scale(0.9);
+	}
+	70%{
+		transform: scale(1.05);
+	}
+
+	85%{
+		transform: scale(1);
+	}
+
+	100%{
+		transform: scale(1);
+	}
+}
+
+/*   ----  OFRECEMOS   ----   */
+
+#ofrecemos {
+	margin: 0;
+}
+
+#ofrecemos h2 {
+	padding-top: 47%;
+	min-height: 200px;
+}
+
+#ofrecemos .contenedor {
+	top-padding: 50px ;
+	background-color: #f2f2f2; 
+	width: 100%;
+}
+
+#ofrecemos h3 {
+	padding: 40px 0 0 0;
+	text-align: center;
+	font-size: 28px;
+	font-family: calibri light;
+}
+
+
+/*   ----  GRID 1  ----   */
+
+
+#ofrecemos h4 {
+	font-size: 28px;
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+.grid1 {
+	display: grid;
+	height: 175vh;
+	grid-template-areas: 
+	"CANCELERIA CANCELERIA PINTURA"
+	"CAMBIARPISOS2 CAMBIARPISOS2 PINTURA"
+	"REMODELARBAÑO REMODELARCOCINA REMODELARPATIO"
+	"REMODELARBAÑO REMODELARCOCINA REMODELARPATIO";
+	grid-gap: 10px;
+	padding: 40px; 
+}
+
+@media(max-width: 1024px) {
+	#ofrecemos h4 {
+		font-size: 22px;
+	}
+
+	.grid1 {
+		height: 300vh;
+		grid-template-areas: 
+		"CANCELERIA""PINTURA"
+		"CAMBIARPISOS2""REMODELARBAÑO"
+		"REMODELARPATIO""REMODELARCOCINA";
+		padding: 10px; 
+	}
+
+}
+
+#ofrecemos .item {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.gird1-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	cursor: pointer;
+}
+
+#ofrecemos .item:nth-of-type(1){
+	grid-area: CANCELERIA;
+}
+
+#ofrecemos .item:nth-of-type(2){
+	grid-area: PINTURA;
+}
+
+#ofrecemos .item:nth-of-type(3){
+	grid-area: CAMBIARPISOS2;
+}
+
+#ofrecemos .item:nth-of-type(4){
+	grid-area: REMODELARBAÑO;
+}
+
+#ofrecemos .item:nth-of-type(5){
+	grid-area: REMODELARCOCINA;
+}
+
+#ofrecemos .item:nth-of-type(6){
+	grid-area: REMODELARPATIO;
+}
+
+.divgird1 {
+	position: absolute;
+	background: rgba(10.2, 58.013, 193.8, 0.4);
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	color: #fff;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	transform: translateX(100%);
+	cursor: pointer;
+	transition: 0.4s ease-in-out;
+}
+
+#ofrecemos i {
+	margin-top: 10px;
+	font-size: 24px;
+}
+
+#ofrecemos .item:hover .divgird1 {
+	transform: translate(0%);
+}
+
+section p {
+	padding: 0 50px 20px 0;
+	text-align: right;
+}
+
+/*   ----  GRID 2  ----   */
+
+#subcuentainf {
+	margin: 0;
+	background-color: #444
+}
+
+#subcuentainf h2{
+	color: #fff;
+	padding: 40px 0 0 0;
+	text-align: center;
+	font-size: 28px;
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+#subcuentainf h3 {
+	font-size: 28px;
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+.grid2 {
+	display: grid;
+	height: 175vh;
+	grid-template-areas: 
+	"MEJORARFACHADA RECUBRIMIENTOSINTERIORES PORTON"
+	"MEJORARFACHADA RECUBRIMIENTOSINTERIORES PORTON"
+	"ILUMINACIÓN2 ILUMINACIÓN2 HERRERIA"
+	"ILUMINACIÓN3 ILUMINACIÓN3 HERRERIA";
+	grid-gap: 10px;
+	padding: 40px; 
+}
+
+@media(max-width: 1024px) {
+	#subcuentainf h3 {
+		font-size: 22px;
+	}
+
+	.grid2 {
+		height: 300vh;
+		grid-template-areas: 
+		"MEJORARFACHADA""RECUBRIMIENTOSINTERIORES""PORTON"
+		"ILUMINACIÓN2""HERRERIA""ILUMINACIÓN3";
+		padding: 10px; 
+	}
+
+}
+
+#subcuentainf .item {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.gird2-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	cursor: pointer;
+}
+
+#subcuentainf .item:nth-of-type(1){
+	grid-area: MEJORARFACHADA;
+}
+
+#subcuentainf .item:nth-of-type(2){
+	grid-area: RECUBRIMIENTOSINTERIORES;
+}
+
+#subcuentainf .item:nth-of-type(3){
+	grid-area: PORTON;
+}
+
+#subcuentainf .item:nth-of-type(4){
+	grid-area: ILUMINACIÓN2;
+}
+#subcuentainf .item:nth-of-type(5){
+	grid-area: HERRERIA;
+}
+
+#subcuentainf .item:nth-of-type(6){
+	grid-area: ILUMINACIÓN3;
+}
+.divgird2 {
+	position: absolute;
+	background: rgba(173.4, 137.4, 30.6, 0.4);
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	color: #fff;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	transform: translateX(-100%);
+	cursor: pointer;
+	transition: 0.4s ease-in-out;
+}
+
+#subcuentainf i {
+	margin-top: 10px;
+	font-size: 24px;
+}
+
+#subcuentainf .item:hover .divgird2 {
+	transform: translate(0%);
+}
+
+/*   ----  GRID 3  ----   */
+
+#contactanos {
+	margin: 0;
+	background-color: #f2f2f2;
+}
+
+
+#contactanos h2{
+	color: #222;
+	padding: 40px 0 0 0;
+	text-align: center;
+	font-size: 28px;
+	font-family: calibri light;
+}
+
+#contactanos h3 {
+	font-size: 28px;
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+.grid3 {
+	display: grid;
+	height: 175vh;
+	grid-template-areas: 
+	"IMPERMEABILIZAR IMPERMEABILIZAR IMPERMEABILIZARAOTEA IMPERMEABILIZARAOTEA PROTECCIONES PROTECCIONES"
+	"IMPERMEABILIZAR IMPERMEABILIZAR IMPERMEABILIZARAOTEA IMPERMEABILIZARAOTEA PROTECCIONES PROTECCIONES"
+	"APLANADOS APLANADOS APLANADOS FIRMES2 FIRMES2 FIRMES2"
+	"APLANADOS APLANADOS APLANADOS FIRMES2 FIRMES2 FIRMES2"
+	"APLANADOS APLANADOS APLANADOS FIRMES FIRMES FIRMES"
+	"APLANADOS APLANADOS APLANADOS FIRMES FIRMES FIRMES";
+	grid-gap: 10px;
+	padding: 40px; 
+}
+
+@media(max-width: 1024px) {
+	#contactanos h2 {
+		font-size: 22px;
+	}
+
+	.grid3 {
+		height: 300vh;
+		grid-template-areas: 
+		"IMPERMEABILIZAR""IMPERMEABILIZARAOTEA"
+		"PROTECCIONES""APLANADOS""FIRMES2""FIRMES";
+		padding: 10px; 
+	}
+
+}
+
+#contactanos .item {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.gird3-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	cursor: pointer;
+}
+
+#contactanos .item:nth-of-type(1){
+	grid-area: IMPERMEABILIZAR;
+}
+
+#contactanos .item:nth-of-type(2){
+	grid-area: IMPERMEABILIZARAOTEA;
+}
+
+#contactanos .item:nth-of-type(3){
+	grid-area: PROTECCIONES;
+}
+
+#contactanos .item:nth-of-type(4){
+	grid-area: APLANADOS;
+}
+
+#contactanos .item:nth-of-type(5){
+	grid-area: FIRMES2;
+}
+
+#contactanos .item:nth-of-type(6){
+	grid-area: FIRMES;
+}
+
+.divgird3 {
+	position: absolute;
+	background: rgba(193.8, 10.2, 10.2, 0.5);
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	color: #fff;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	transform: translateX(100%);
+	cursor: pointer;
+	transition: 0.4s ease-in-out;
+}
+
+#contactanos i {
+	margin-top: 10px;
+	font-size: 24px;
+}
+
+#contactanos .item:hover .divgird3 {
+	transform: translate(0%);
+}
+
+/*   ----  FOOTER   ----   */
+
+footer {
+	background-color: #333; 
+}
+footer p {
+	font-size: 20px;
+	color: #bbb;
+}
+
+footer .contenedor {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding-top: 20px;
+	padding-bottom: 35px;
+}
+
+.sociales {
+	width: 100%;
+	text-align: center;
+	font-size: 28px;
+}
+
+.sociales a {
+	color: #bbb;
+	text-decoration: none;
+}
