@@ -57,13 +57,6 @@ h1{
 	display: none;
 }
 
-header label {
-	float: right;
-	font-size: 28px;
-	margin: 15px 5px;
-	cursor: pointer;
-}
-
 .menu {
 	position: absolute;
 	top: 15vh;
@@ -97,31 +90,53 @@ header .contenedor {
 	display: table;
 }
 
-@media(min-width: 700px) {
+@media(min-width: 10px) {
+
 	header {
 		height: 15vh;
 	}
 
 	header img{
 		width: 10%;
-		min-width: 250px;
+		min-width: 100px;
 	}
 
 	header label {
-		font-size: 8vh;
-		margin: 4vh 2vh;
+		float: right;
+		font-size: 28px;
+		margin: 15px 5px;
+		cursor: pointer;
+	}
+	
+}
+
+@media(min-width: 700px) {
+	
+	header {
+		height: 15vh;
 	}
 
-	.menu a {
-		font-size: 90px;
-		padding: 20px;
-		margin: 20px;
-		height: 15%;
+	header img{
+		width: 10%;
+		min-width: 150px;
+	}
+
+	header label {
+		float: right;
+		font-size: 28px;
+		margin: 15px 5px;
+		cursor: pointer;
 	}
 	
 }
 
 @media(min-width: 1024px) {
+
+	header img{
+		width: 10%;
+		min-width: 250px;
+	}
+
 	.menu{
 		position: static;
 		width: auto;
@@ -149,8 +164,6 @@ header .contenedor {
 		height: 60px;
 	}
 }
-
-
 
 
 /*   ----  BANNER   ----   */
