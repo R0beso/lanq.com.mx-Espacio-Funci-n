@@ -3,13 +3,7 @@ body{
 	font-family: 'Calibri';
 	z-index: 50;
 	background-color: #f2f2f2;
-}
-
-p {
-	font-size: 24px;
-	font-family: 'Nunito Sans', sans-serif;
-	text-align: center;
-	padding: 5px;
+	overflow-y: auto;
 }
 
 header{
@@ -43,7 +37,7 @@ h1{
 
 
 @media(min-width: 1024px) {
-	p {
+	p strong {
 		font-size: 16px;
 		font-family: 'Nunito Sans', sans-serif;
 		text-align: center;
@@ -168,7 +162,7 @@ header .contenedor {
 
 /*   ----  BANNER   ----   */
 
-section {
+.main-inicio section {
 	width: 100%;
 	margin-bottom: 25px;
 }
@@ -297,6 +291,13 @@ section {
 	"REMODELARBAÑO REMODELARCOCINA REMODELARPATIO";
 	grid-gap: 10px;
 	padding: 40px; 
+}
+
+p strong {
+	font-size: 24px;
+	font-family: 'Nunito Sans', sans-serif;
+	text-align: center;
+	padding: 5px;
 }
 
 @media(max-width: 1024px) {
@@ -607,17 +608,21 @@ section p {
 	transform: translate(0%);
 }
 
-/*   ----  FOOTER   ----   */
+/*----- FOOTER -----*/
 
-footer {
+.footer-inicio {
 	background-color: #333; 
 }
-footer p {
+
+.footer-inicio p {
 	font-size: 20px;
 	color: #bbb;
+	font-family: 'Nunito Sans', sans-serif;
+	text-align: center;
+	padding: 5px;
 }
 
-footer .contenedor {
+.footer-inicio .contenedor {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -625,13 +630,15 @@ footer .contenedor {
 	padding-bottom: 35px;
 }
 
-.sociales {
+.footer-inicio .sociales {
 	width: 100%;
 	text-align: center;
 	font-size: 28px;
 }
 
-.sociales a {
+.footer-inicio .sociales a {
 	color: #bbb;
 	text-decoration: none;
+	padding-left: 3px;
+	padding-right: 3px;
 }
