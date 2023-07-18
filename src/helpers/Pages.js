@@ -15,10 +15,6 @@ export const activarScrollYTitulo = (pathname) => {
             document.body.style.overflowY = 'hidden';
             document.title = "LANQ | Contacto";
             break;
-        case '/LANQ-React-Version':
-            // Redireccionar pagina (En github pages)
-            window.location.href = '/';
-            break;
         default:
             document.body.style.overflowY = 'hidden';
             document.title = "Página no encontrada";
