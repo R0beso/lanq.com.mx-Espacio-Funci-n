@@ -10,7 +10,11 @@ export const GridItem = ({id, gridItems}) => {
                         <Link to={item.to}>
                             <img loading="lazy" src={item.imgSrc} alt={item.alt} className={`gird${id}-img`} />
                             <div className={`divgird${id}`} data-aos-useclassnames={false} data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="900">
-                                <h4 className={`gird${id}-title`}>{item.title}</h4>
+                                { id === 2 || id === 3 ? (
+                                    <h3 className={`gird${id}-title`}>{item.title}</h3>
+                                ):( /* id === 1 ? */
+                                    <h4 className={`gird${id}-title`}>{item.title}</h4>
+                                )}
                                 <i className={item.iconClass}></i>
                             </div>
                         </Link>
