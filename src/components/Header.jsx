@@ -5,7 +5,7 @@ export const Header = () => {
     <header className="header">
 		<div className="contenedor">
 			<Link to='/'><img className="header-img" loading="lazy" src="./assets/images/LogoSF1.png" alt="Logo LANQ" /></Link>
-			<h1 className="h1-contacto">LANQ</h1>
+			<h1 className="h1-contacto">LANQ | Espacio & Función</h1>
 			<input type="checkbox" id="menu-bar" />
 			<label className="fas fa-bars" htmlFor="menu-bar"></label>
 			<nav className="menu" htmlFor="m">

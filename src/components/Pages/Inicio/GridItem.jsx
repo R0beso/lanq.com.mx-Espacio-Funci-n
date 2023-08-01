@@ -9,7 +9,7 @@ export const GridItem = ({id, gridItems}) => {
                     <article className="item" key={index}>
                         <Link to={item.to}>
                             <img loading="lazy" src={item.imgSrc} alt={item.alt} className={`gird${id}-img`} />
-                            <div className={`divgird${id}`} data-aos-useclassnames={false} data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="900">
+                            <div className={`divgird${id}`} data-aos-useclassnames={false} data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="200">
                                 { id === 2 || id === 3 ? (
                                     <h3 className={`gird${id}-title`}>{item.title}</h3>
                                 ):( /* id === 1 ? */

@@ -7,8 +7,8 @@ const MENSAJE_404_2 = 'Parece que la página que estás buscando no existe o no 
 
 export const Pagina404 = () => {
   return (
-    <main className="main-contacto-404 main-404">
-      <section className="grid-contacto-404">
+    <main className="main-contacto main-404">
+      <section className="grid-contacto">
           <h2>{MENSAJE_404_1}</h2>
           <p>{MENSAJE_404_2}</p>
           <article>
