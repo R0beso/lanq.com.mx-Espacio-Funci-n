@@ -11,6 +11,15 @@ app.get('/contacto', (req, res) => {
   res.sendFile('/root/app2/public/contacto.html');
 });
 
+app.get('/download-java-house', (req, res) => {
+  res.download('/root/app2/public/AnimacionCasa.java', 'AnimacionCasa.java', (err) => {
+    if (err) {
+      console.error('Error al descargar el archivo:', err);
+      res.status(500).send('Error al descargar el archivo');
+    }
+  });
+});
+
 app.get('/help', (req, res) => {
   res.send('Mensajes enviados con res.send(): /help, /node - mensaje json: /json - req.ip: /ip');
 });
