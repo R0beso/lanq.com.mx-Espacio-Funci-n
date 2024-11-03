@@ -48,7 +48,7 @@ app.get('/ip', (req, res) => {
 });
 
 app.get('/horario', (req, res) => {
-    return res.redirect('/off-topic/app-java?type=html');
+    return res.redirect('/off-topic-app-java?type=html');
 });
 
 // Ruta donde se encuentran los archivos de "/horario"
@@ -57,10 +57,10 @@ const jarFilePath = '/root/app2/public/app-horario.jar';
 const htmlFilePath = '/root/app2/public/horario-logica-difusa.html';
 
 // Endpoint para manejar diferentes tipos de descargas
-app.get('/off-topic/app-java', (req, res) => {
+app.get('/off-topic-app-java', (req, res) => {
 
   if (!req.query.type) {
-    return res.redirect('/off-topic/app-java?type=html');
+    return res.redirect('/off-topic-app-java?type=html');
   }
 
   const type = req.query.type;
