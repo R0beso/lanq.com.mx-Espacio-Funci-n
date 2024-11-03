@@ -47,35 +47,41 @@ app.get('/ip', (req, res) => {
   res.send(`IP del cliente: ${ip}`);
 });
 
+app.get('/horario', (req, res) => {
+    return res.redirect('/off-topic/app-java?type=html');
+});
+
 // Ruta donde se encuentran los archivos de "/horario"
-const jarFilePath = '/root/app2/public/HorarioExportar.jar';
-const jnlpFilePath = '/root/app2/public/HorarioExportar.jnlp';
+const jarFilePath = '/root/app2/public/app-horario.jar';
+//const jnlpFilePath = '/root/app2/public/HorarioExportar.jnlp';
 const htmlFilePath = '/root/app2/public/horario-logica-difusa.html';
 
 // Endpoint para manejar diferentes tipos de descargas
-app.get('/horario', (req, res) => {
+app.get('/off-topic/app-java', (req, res) => {
 
   if (!req.query.type) {
-    return res.redirect('/horario?type=html');
+    return res.redirect('/off-topic/app-java?type=html');
   }
 
   const type = req.query.type;
 
   if (type === 'jar') {
-    res.download(jarFilePath, 'HorarioExportar.jar', (err) => {
+    res.download(jarFilePath, 'app-horario.jar', (err) => {
       if (err) {
         console.error('Error al enviar el archivo:', err);
         res.status(500).send('Error al descargar el archivo .jar.');
       }
     });
-  } else if (type === 'jnlp') {
+  } /*
+  else if (type === 'jnlp') {
     res.download(jnlpFilePath, 'HorarioExportar.jnlp', (err) => {
       if (err) {
         console.error('Error al enviar el archivo:', err);
         res.status(500).send('Error al descargar el archivo .jnlp.');
       }
     });
-  } else if (type === 'html') {
+  } */
+  else if (type === 'html') {
     res.sendFile(htmlFilePath, (err) => {
       if (err) {
         console.error('Error al enviar el archivo:', err);
