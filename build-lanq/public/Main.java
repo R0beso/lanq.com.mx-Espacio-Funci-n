@@ -38,6 +38,7 @@ public class Main extends JFrame implements ActionListener  {
     	super("Evaluar horarios de estudiantes");
     	fb = new FunctionBlock(null);
     	creaVentanaPrincipal();
+    	nuevoHorario();
     }
     
     public void creaVentanaPrincipal() {
@@ -47,17 +48,17 @@ public class Main extends JFrame implements ActionListener  {
     	etiqResultados2 = new JLabel();
     	etiqPromedio = new JLabel();
     	
-        add(boton1);
-        add(boton2);
-        add(etiqResultados1);
-        add(etiqResultados2);
-        add(etiqPromedio);
+        this.add(boton1);
+        this.add(boton2);
+        this.add(etiqResultados1);
+        this.add(etiqResultados2);
+        this.add(etiqPromedio);
         
-        setLayout(null);
-        setSize(430, 560);
-        setResizable(false);
-        setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLayout(null);
+        this.setSize(430, 560);
+        this.setResizable(false);
+        this.setVisible(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         boton1.setBounds(25, 15, 150, 25);
         boton2.setBounds(195, 15, 195, 25);
@@ -71,10 +72,8 @@ public class Main extends JFrame implements ActionListener  {
 
     public void actionPerformed(ActionEvent e) {
     	if (e.getSource() == boton1) {
+    		nuevoHorario();
     		repaint();
-    		etiqResultados1.setText(horario.getMateriasCargadasYHorasLibres());
-    		etiqResultados2.setText(horario.getHoraDeEntradaYPromedio());
-    		etiqPromedio.setText("Calificación: "+horario.getCalificacion()+"/100");
         }
     	else if (e.getSource() == boton2) {
             JFuzzyChart.get().chart(fb);
@@ -83,27 +82,28 @@ public class Main extends JFrame implements ActionListener  {
     
     public void paint(Graphics g) {
 		super.paint(g);
-		horario = new Horario(g);
-		aplicaLogicaDifusa();
 		etiqResultados1.setText(horario.getMateriasCargadasYHorasLibres());
 		etiqResultados2.setText(horario.getHoraDeEntradaYPromedio());
 		etiqPromedio.setText("Calificación: " + horario.getCalificacion()+"/100");
-		horario.graficar();
+		horario.graficar(g);
+    }
+    
+    public void nuevoHorario() {
+		horario = new Horario();
+		aplicaLogicaDifusa();
     }
     
     // Clase horario
 	private class Horario {
 	
 		private Random r;
-		private Graphics g;
 		private int materiasCargadas;
 		private int horasLibres;
 		private int horaDeEntrada;
 		private int[] horario;
 		private int calificacion;
 		
-		public Horario(Graphics g) {
-			this.g = g;
+		public Horario() {
 			this.r = new Random();
 			this.materiasCargadas = generaMateriasCargadas();
 			this.horasLibres = generaHorasLibres();
@@ -233,7 +233,7 @@ public class Main extends JFrame implements ActionListener  {
 			return exigencia;
 		}
 		
-		public void graficar() {
+		public void graficar(Graphics g) {
 			
 			Font font = new Font("Calibri", Font.PLAIN, 20);
 		    g.setFont(font);
@@ -256,11 +256,11 @@ public class Main extends JFrame implements ActionListener  {
 			for(int i=0; i<horario.length; i++) {
 				g.setColor(new Color(34,42,53));
 				if (horario[i] != -1) {
-					pintarMateria(i);
+					pintarMateria(i, g);
 				}
 			}
 			
-			pintarFondoHora();
+			pintarFondoHora(g);
 			for(int i=0; i<horario.length; i++) {
 				g.drawString((i+7)+":00", 43, 130+(i*25));
 			}
@@ -274,7 +274,7 @@ public class Main extends JFrame implements ActionListener  {
 			
 		}
 		
-		private void pintarMateria(int i) {
+		private void pintarMateria(int i, Graphics g) {
 			if (horario[i] < 16 || (horario[i]>82 && horario[i] <= 100)) {
 				g.setColor(new Color(196, 89, 17));
 				g.fillRect(30, (110+(i*25)), 370, 25);
@@ -295,7 +295,7 @@ public class Main extends JFrame implements ActionListener  {
 			}
 		}
 		
-		private void pintarFondoHora() {
+		private void pintarFondoHora(Graphics g) {
 			
 			if ( calificacion < 65 ) {
 				g.setColor(new Color(196, 89, 17));
@@ -375,7 +375,7 @@ public class Main extends JFrame implements ActionListener  {
                 
                 VAR_OUTPUT
                     // (0 a 100)
-                    calificacionHorarioRango33a66 : REAL;
+                    calificacionHorarioRango33a67 : REAL;
                 END_VAR
                 
                 FUZZIFY materiasCargadas
@@ -401,7 +401,7 @@ public class Main extends JFrame implements ActionListener  {
                     TERM estrictos := (50, 0) (100.5, 1) (100.5, 0);
                 END_FUZZIFY
                 
-                DEFUZZIFY calificacionHorarioRango33a66
+                DEFUZZIFY calificacionHorarioRango33a67
                     TERM malo := (0, 0) (0, 1) (100, 0);
                     TERM bueno := (0, 0) (100, 1) (100, 0);
                     METHOD : COG;
@@ -409,8 +409,8 @@ public class Main extends JFrame implements ActionListener  {
                 
                 RULEBLOCK No1
                 
-                    RULE 1 : IF ((materiasCargadas IS pocas) OR (materiasCargadas IS elMaximo)) AND (horasLibres IS muchas) AND (horaDeEntrada IS mixto) AND ((promedioDeExigenciaProfesores IS barcos) OR (promedioDeExigenciaProfesores IS estrictos)) THEN calificacionHorarioRango33a66 IS malo;
-                    RULE 2 : IF materiasCargadas IS buenas AND horasLibres IS ningunaOUna AND (horaDeEntrada IS matutino OR horaDeEntrada IS vespertino) AND promedioDeExigenciaProfesores IS moderado THEN calificacionHorarioRango33a66 IS bueno;
+                    RULE 1 : IF ((materiasCargadas IS pocas) OR (materiasCargadas IS elMaximo)) AND (horasLibres IS muchas) AND (horaDeEntrada IS mixto) AND ((promedioDeExigenciaProfesores IS barcos) OR (promedioDeExigenciaProfesores IS estrictos)) THEN calificacionHorarioRango33a67 IS malo;
+                    RULE 2 : IF materiasCargadas IS buenas AND horasLibres IS ningunaOUna AND (horaDeEntrada IS matutino OR horaDeEntrada IS vespertino) AND promedioDeExigenciaProfesores IS moderado THEN calificacionHorarioRango33a67 IS bueno;
                 
                 END_RULEBLOCK
                 
@@ -434,7 +434,7 @@ public class Main extends JFrame implements ActionListener  {
         fb.evaluate();
 
         // Obtener la salida (calificacionHorario) para uso posterior
-        Variable calificacionHorario = fb.getVariable("calificacionHorarioRango33a66");
+        Variable calificacionHorario = fb.getVariable("calificacionHorarioRango33a67");
         // Ajusta al rango /100, (33.3 - 66.6) -> (0 - 100)
         horario.setCalificacion((int)(calificacionHorario.getValue() - 33.3) * 3);
     }
