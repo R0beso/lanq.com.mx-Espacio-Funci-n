@@ -1,0 +1,15 @@
+
+
+# /build/* linguist-vendored=true: Esto marca todos los archivos dentro de la carpeta build como "vendidos" (como si fueran bibliotecas o archivos externos), 
+# lo que significa que no influirán en la detección del lenguaje principal. Esto incluye archivos .java y .jar en build.
+
+/build-lanq/* linguist-vendored=true
+
+
+
+# /src/*.js linguist-language=JavaScript: Esto asegura que los archivos .js y .jsx dentro de la carpeta src sean tratados como JavaScript,
+# lo que refuerza aún más que JavaScript es el lenguaje principal del proyecto.
+
+/src/*.js linguist-language=JavaScript
+/src/*.jsx linguist-language=JavaScript
+
