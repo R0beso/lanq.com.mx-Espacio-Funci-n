@@ -302,7 +302,7 @@ public class Main extends JFrame implements ActionListener  {
 				g.fillRect(30, 85, 70, 350);
 				g.setColor(Color.WHITE);
 				
-			} else if ( calificacion < 85 ) {
+			} else if ( calificacion < 80 ) {
 				g.setColor(new Color(255, 192, 0));
 				g.fillRect(30, 85, 70, 350);
 				g.setColor(Color.BLACK);
@@ -331,22 +331,31 @@ public class Main extends JFrame implements ActionListener  {
 			return horaDeEntrada;
 		}
 	
-		public int getPromedioDeExigenciaProfesores() {
+		public int getPromedioDeExigenciaModeradaProfesores() {
 			
 			int promedio = 0;
 			for(int i =0; i<horario.length; i++) {
 				if(horario[i] != -1) {
-					promedio += horario[i];
+					promedio += getExigenciaModeradaProfesor(horario[i]);
 				}
 			}
 			return promedio / materiasCargadas;
 			
 		}
 		
+		private int getExigenciaModeradaProfesor(int exigencia) {
+			return exigencia > 50 
+				?( 
+					100 - ((exigencia - 50) * 2)
+				):( 
+					exigencia * 2
+				);
+		}
+		
 		public String getHoraDeEntradaYPromedio() {
 			return "Hora de entrada: "+horaDeEntrada
-					+"      \tPromedio de exigencia: "
-					+getPromedioDeExigenciaProfesores()+"%";
+					+"      \tExigencia Moderada: "
+					+getPromedioDeExigenciaModeradaProfesores()+"%";
 		}
 	
 		public int getCalificacion() {
@@ -370,7 +379,7 @@ public class Main extends JFrame implements ActionListener  {
                     materiasCargadas : REAL; // (3 a 8)
                     horasLibres : REAL;     // (0 a 6)
                     horaDeEntrada : REAL;   // (7 a 17)
-                    promedioDeExigenciaProfesores : REAL;  // (0 a 100)
+                    promedioExigenciaModeradaProfesores : REAL;  // (0 a 100)
                 END_VAR
                 
                 VAR_OUTPUT
@@ -395,10 +404,9 @@ public class Main extends JFrame implements ActionListener  {
                     TERM vespertino := (10.4, 0) (12.5, 1) (17.5, 1) (17.5, 0);
                 END_FUZZIFY
                 
-                FUZZIFY promedioDeExigenciaProfesores
-                    TERM barcos := (-0.5, 0) (-0.5, 1) (50, 0);
-                    TERM moderado := (-0.5, 0) (50, 1) (100.5, 0);
-                    TERM estrictos := (50, 0) (100.5, 1) (100.5, 0);
+                FUZZIFY promedioExigenciaModeradaProfesores
+                    TERM poco := (0, 0) (0, 1) (100, 0);
+                    TERM mucho := (0, 0) (100, 1) (100, 0);
                 END_FUZZIFY
                 
                 DEFUZZIFY calificacionHorarioRango33a67
@@ -409,8 +417,8 @@ public class Main extends JFrame implements ActionListener  {
                 
                 RULEBLOCK No1
                 
-                    RULE 1 : IF ((materiasCargadas IS pocas) OR (materiasCargadas IS elMaximo)) AND (horasLibres IS muchas) AND (horaDeEntrada IS mixto) AND ((promedioDeExigenciaProfesores IS barcos) OR (promedioDeExigenciaProfesores IS estrictos)) THEN calificacionHorarioRango33a67 IS malo;
-                    RULE 2 : IF materiasCargadas IS buenas AND horasLibres IS ningunaOUna AND (horaDeEntrada IS matutino OR horaDeEntrada IS vespertino) AND promedioDeExigenciaProfesores IS moderado THEN calificacionHorarioRango33a67 IS bueno;
+                    RULE 1 : IF ((materiasCargadas IS pocas) OR (materiasCargadas IS elMaximo)) AND (horasLibres IS muchas) AND (horaDeEntrada IS mixto) AND (promedioExigenciaModeradaProfesores IS poco) THEN calificacionHorarioRango33a67 IS malo;
+                    RULE 2 : IF materiasCargadas IS buenas AND horasLibres IS ningunaOUna AND (horaDeEntrada IS matutino OR horaDeEntrada IS vespertino) AND promedioExigenciaModeradaProfesores IS mucho THEN calificacionHorarioRango33a67 IS bueno;
                 
                 END_RULEBLOCK
                 
@@ -428,7 +436,7 @@ public class Main extends JFrame implements ActionListener  {
         fb.setVariable("materiasCargadas", horario.getMateriasCargadas());
         fb.setVariable("horasLibres", horario.getHorasLibres());
         fb.setVariable("horaDeEntrada", horario.getHoraDeEntrada());
-        fb.setVariable("promedioDeExigenciaProfesores", horario.getPromedioDeExigenciaProfesores());
+        fb.setVariable("promedioExigenciaModeradaProfesores", horario.getPromedioDeExigenciaModeradaProfesores());
 
         // Evaluar el sistema difuso
         fb.evaluate();
