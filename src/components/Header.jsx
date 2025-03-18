@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 export const Header = () => {
   return (
@@ -11,7 +13,7 @@ export const Header = () => {
 			<nav className="menu" htmlFor="m">
 				<Link to='/'>Inicio</Link>
 				<Link to='/contacto'>Contacto</Link>
-				<Link to='/sobreMi'>Sobre mi</Link>
+				<a href="https://www.google.com/search?q=site%3Alanq.com.mx"><FontAwesomeIcon icon={faMagnifyingGlass} /></a>
 			</nav>
 		</div>
 	</header>

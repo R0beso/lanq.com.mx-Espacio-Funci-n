@@ -25,31 +25,60 @@ server {
 	root /root/app2/public;
 	index index.html index.htm index.nginx-debian.html;
 
+#       location / {
+#               try_files $uri $uri/ =404; # Intenta servir archivos estáticos antes de aplicar default_type
+#               default_type application/x-java-jnlp-file;
+#       }
 
-		# First attempt to serve request as file, then
-		# as directory, then fall back to displaying a 404.
-		# try_files $uri $uri/ =404;
+#       location ~ \.jar$ {
+#               default_type application/java-archive;
+#       }
+
+        #location /node {
+#       location / {
+#               proxy_pass http://localhost:3108;
+#               proxy_http_version 1.1;
+#               proxy_set_header Upgrade $http_upgrade;
+#               proxy_set_header Host $host;
+#               proxy_cache_bypass $http_upgrade;
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                # try_files $uri $uri/ =404;
+#       }
 
 
-	# Configuración para servir archivos .jar
-	location ~ \.jar$ {
-	    default_type application/java-archive;
-	    root /path/to/jar/files;
-	}
+    # Proxy para Spring Boot
+    location /spring/ {
+        proxy_pass http://localhost:8080/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
 
-	# Configuración del proxy para Node.js
-	location / {
-	    proxy_pass http://localhost:3108;
-	    proxy_http_version 1.1;
-	    proxy_set_header Upgrade $http_upgrade;
-	    proxy_set_header Connection "upgrade";
-	    proxy_set_header Host $host;
-	    proxy_cache_bypass $http_upgrade;
-	}
+        # Configuración del proxy para Node.js para todas las demás rutas
+        location / {
+            proxy_pass http://localhost:3108;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+        }
+
 
 
 }
 
+#server {
+    #listen 80;
+#    server_name lanq.com.mx;
+#    if ($host = lanq.com.mx) {
+#       return 301 https://$host$request_uri;
+#    } # managed by Certbot
+
+#    return 402;
+#}
 
 
 
