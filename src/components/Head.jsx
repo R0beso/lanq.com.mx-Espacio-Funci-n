@@ -6,7 +6,7 @@ export const Head = () => {
       <meta charset="UTF-8" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>LANQ</title>
+      <title>LANQ | Espacio & Función</title>
       <link rel="icon" href="./assets/images/LogoCirSF1.ico" />
       <link rel="canonical" href="https://www.lanq.com.mx" />
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
