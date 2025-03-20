@@ -1,0 +1,104 @@
+
+ 
+ /*Wuitar*/
+
+
+  
+  
+  /* Quitar margin al main para poner el menu 2*/
+    main {
+        margin-top: 27px;
+    }
+
+    /* Segundo menú modificado: imagen centrada y el resto del contenido centrado y desplazado a la derecha */
+.menu2 {
+    background-color: #fff6bf;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 40px;
+    margin-top: 60px;
+  }
+  /* Contenedor para la imagen, centrado en el espacio asignado */
+  .menu2 .container-arriba {
+    flex: 1;
+    display: flex;
+    flex-direction:row;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 20px;
+    z-index: 110;
+  }
+  .menu2 .container-arriba img {
+    border-radius: 20px;
+    height: 40px;
+  }
+  /* Contenedor para el texto y el botón, alineado a la izquierda pero desplazado un poco a la derecha */
+  .menu2 .info-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Contenedor para el texto y el botón, alineado a la izquierda pero desplazado un poco a la derecha */
+  .menu2 .separador-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .menu2 .info-container p {
+    margin: 0;
+    font-size: 16px;
+    margin-bottom: 5px;
+    margin-left: 60px;
+  }
+
+  .menu2 .info-container button {
+    padding: 6px 10px;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .menu2 .info-container button:hover {
+    background-color: #0056b3;
+  }
+
+
+  /* main */
+
+  .grid{
+    margin: 0px 0px 0px 160px;
+  }
+
+  h2 {
+    margin: 5px auto 35px auto;
+  }
+
+  .contenedor-scroll {
+    height: 260px;
+    width: 800px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow-y: auto; /* Activa el scroll vertical */
+  }
+
+  p {
+    min-width: 689px;
+    max-width: 860px;
+  }
+  
+
+#wp {
+    padding: 10px 20px;
+    margin: 40px;
+}
+
+#img {
+    margin-left: 60px;
+    max-height: 600px !important;
+    height: 550px;
+}
