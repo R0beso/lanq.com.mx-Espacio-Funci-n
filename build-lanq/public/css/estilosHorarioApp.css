@@ -1,23 +1,24 @@
 
- 
- /*Wuitar*/
+
+html, body {
+  overflow: hidden;
+}
 
 
-  
-  
+
   /* Quitar margin al main para poner el menu 2*/
     main {
         margin-top: 27px;
     }
 
+/********* menu **********/
+
     /* Segundo menú modificado: imagen centrada y el resto del contenido centrado y desplazado a la derecha */
 .menu2 {
     background-color: #fff6bf;
     display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 30px 40px;
-    margin-top: 60px;
+    margin-top: 15vh;
   }
   /* Contenedor para la imagen, centrado en el espacio asignado */
   .menu2 .container-arriba {
@@ -37,7 +38,7 @@
   .menu2 .info-container {
     flex: 1;
     display: flex;
-    justify-content: center;
+
   }
 
   /* Contenedor para el texto y el botón, alineado a la izquierda pero desplazado un poco a la derecha */
@@ -48,10 +49,9 @@
   }
 
   .menu2 .info-container p {
-    margin: 0;
+    margin: 0 0 5px 60px;
+    padding: 0 500px 0 0;
     font-size: 16px;
-    margin-bottom: 5px;
-    margin-left: 60px;
   }
 
   .menu2 .info-container button {
@@ -68,37 +68,215 @@
   }
 
 
-  /* main */
+  /* responsive */
+  @media(min-width: 560px) {
+ 
+    .menu2 .info-container p {
+      margin: 0 0 5px 60px;
+      padding: 0 300px 0 0;
+      font-size: 16px;
+    }
 
-  .grid{
-    margin: 0px 0px 0px 160px;
   }
 
-  h2 {
-    margin: 5px auto 35px auto;
+  @media(min-width: 760px) {
+    
+    .menu2 .info-container p {
+      padding: 0; 
+    }
+
+  }
+
+  @media(min-width: 1024px) {
+    
+    .menu2 {
+      margin-top: 60px;
+    }
+    
+    .menu2 .info-container p {
+      padding: 0; 
+    }
+  
+  }
+
+  /************* main *************/
+
+  .grid{
+    margin: 0px 0px 0px 60px;
+  }
+
+  .titulo {
+    margin: 5px 250px 35px 250px;
   }
 
   .contenedor-scroll {
+    margin: 0px 60px 0px 170px;
     height: 260px;
-    width: 800px;
+    width: 300px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    padding-bottom: 100px;
     overflow-y: auto; /* Activa el scroll vertical */
   }
 
-  p {
+  .p-aside {
     min-width: 689px;
     max-width: 860px;
   }
   
 
-#wp {
-    padding: 10px 20px;
-    margin: 40px;
-}
+  #wp {
+      padding: 10px 20px;
+      margin: 40px;
+  }
 
-#img {
-    margin-left: 60px;
-    max-height: 600px !important;
-    height: 550px;
+  #img {
+      margin: 0 0 0 60px;
+      max-height: 600px !important;
+      height: 550px;
+      width: 0;
+  }
+
+  .p-info{
+    display: none;
+  }
+
+  article{
+    display: none;
+  }
+
+
+  @media(min-width: 1024px) {
+
+    
+    .grid{
+      margin: 0px 0px 0px 160px;
+    }
+    
+    .contenedor-scroll {
+      height: 20vh;
+      width: 37vw;
+      margin: 0;
+    }
+
+    .p-info{
+      display: block;
+    }
+
+    article{
+      display: grid;
+    }
+
+    #img{
+      margin: 0 0 0 60px;
+      padding: 0 0 0 0;
+      height: 550px;
+      width: 360px;
+      max-width: 45vw;
+    }
+
+    .contenedor-main {
+      max-width: 45vw;
+    }
+
+    /*Altura*/
+    
+
+	@media(max-height: 800px) {
+
+    .contenedor-scroll {
+      height: 10vh;
+      width: 37vw;
+      margin: 0;
+    }
+
+    #img{
+      margin: 0 0 0 60px;
+      padding: 0 0 0 0;
+      height: 440px;
+      width: 288px;
+      max-width: 45vw;
+    }
+  
+  }
+
+  @media(max-height: 700px) {
+
+    .titulo{
+      margin: 0 !important;
+      margin-bottom: 5px !important;
+    }
+    
+    #wp {
+      margin: 10px 0 !important;
+    }
+
+    .contenedor-scroll {
+      height: 3vh;
+      width: 37vw;
+      margin: 0;
+    }
+
+    #img{
+      margin: 0 0 0 60px;
+      padding: 0 0 0 0;
+      height: 352px;
+      width: 230px;
+      max-width: 45vw;
+    }
+  }
+    
+  @media(max-height: 600px) {
+
+    .titulo{
+      margin: 0 !important;
+      margin-bottom: 5px !important;
+    }
+
+    #wp {
+      margin: 10px 0 !important;
+    }
+
+    .contenedor-scroll {
+      height: 10vh;
+      width: 37vw;
+      margin: 0;
+    }
+
+    #img{
+      margin: 0 0 0 60px;
+      padding: 0 0 0 0;
+      height: 281px;
+      width: 184px;
+      max-width: 45vw;
+    }
+  }
+
+  @media(max-height: 520px) {
+
+    .titulo{
+      margin: 0 !important;
+      margin-bottom: 5px !important;
+    }
+
+    #wp {
+      margin: 10px 0 !important;
+    }
+    
+    .contenedor-scroll {
+      height: 10vh;
+      width: 37vw;
+      margin: 0;
+    }
+
+    #img{
+      margin: 0 0 0 60px;
+      padding: 0 0 0 0;
+      height: 210px;
+      width: 138px;
+      max-width: 45vw;
+    }
+  
+  }
+
 }
